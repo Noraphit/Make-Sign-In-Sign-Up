@@ -1,21 +1,24 @@
 "use client";
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from "next/navigation";
 
 type Props = {}
 
 const Login = (props: Props) => {
-  const [action, setAction] = useState("Sign");
+  const router = useRouter();
+  const [action, setAction] = useState("Login");
+
   return (
     <>
       <div className="container flex flex-col m-auto mt-[200px] bg-white pb-[30px] w-[600px]">
         <div className="header flex flex-col items-center gap-[9px] w-[100%] mt-[30px]">
-          <div className="text text-[#3c009d] text-[48px] font-[700]">Sign Up</div>
+          <div className="text text-[#3c009d] text-[48px] font-[700]">{action}</div>
           <div className="underline w-[91px] h-[6px] bg-[#3c009d] round-[9px]"></div>
         </div>
 
         <div className="inputs mt-[55px] flex flex-col gap-[25px]">
-          <div className="input flex items-center m-auto w-[480px] h-[80px] bg-[#eaeaea] rounded-[6px]">
+          <div className="input flex items-center m-auto w-[480px] h-[80px] bg-[#eaeaea] rounded-[6px] hidden">
             <Image
               src="/images/person.png"
               width={25}
@@ -54,7 +57,7 @@ const Login = (props: Props) => {
           <div className="forgot-password pl-[62px] mt-[27px] text-[#797979] text-[18px]">Forgot Password? <span className="text-[#4c00b4] cursor-pointer">Click Here!</span></div>
 
           <div className="submit-container flex gap-[30px] my-[20px] mx-auto">
-            <div className="submit flex justify-center items-center w-[220px] h-[59px] text-[#fff] bg-[#4c00b4] rounded-[50px] text-[#19px] font-[700] cursor-pointer">Sign Up</div>
+            <div className="submit flex justify-center items-center w-[220px] h-[59px] text-[#676767] bg-[#EAEAEA] rounded-[50px] text-[#19px] font-[700] cursor-pointer" onClick={() => {router.push("/SignUp")}}>Sign Up</div>
             <div className="submit submit flex justify-center items-center w-[220px] h-[59px] text-[#fff] bg-[#4c00b4] rounded-[50px] text-[#19px] font-[700] cursor-pointer">Login</div>
           </div>
         </div>
